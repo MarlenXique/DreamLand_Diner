@@ -1,18 +1,26 @@
 void setup(){
-  size(800, 800);
+  size(850, 850);
   textMode(CENTER);
   imageMode(CENTER);
   rectMode(CORNER);
   
-  sceneBackground = loadImage("scenebackground.png");
+  scene1top = loadImage("scene1top.png");
+  scene3stove = loadImage("scene3stove.png");
+  sceneBackgroundWaitress = loadImage("scenebackgroundwaitress.png");
   
   player = loadImage("player.png");
   playerWaitress = loadImage("playerwaitress.png");
   
+  //playerStartXScene3 = 800;
+  //playerStartYScene3= 800;
+  //playerStartXScene4 = width/2 - 380;
+  //playerStartYScene4 = height/2 - 380;
+  
 }
 
 void draw() {
-  background(#54514A); 
+  background(#3d3254);
+ 
   if(scene == 1){
      fill(#d9113d);
      stroke(#783316);
@@ -31,17 +39,37 @@ void draw() {
      fill(255);
      textSize(30);
      text(start,width/2 - 280, height/2 - 100, 500, 500);
-   }   
-    else if(scene == 2){
- 
-      player.resize(100, 0);
-      image(player, 750, 745);
+   } else if(scene == 2){ 
+   //visual novel scene
+   } 
+    else if(scene == 3){
+      
+      //playerX = playerStartXScene3;
+      //playerY = playerStartYScene3;
+
+      //player.resize(100, 0);
+      image(player, playerX, playerY,playerSize,playerSize);
       
       playerWaitress.resize(150, 0);
       image(playerWaitress, width/2 - 150, height/2 - 50);
       
-      image(sceneBackground, width/2, height/2);
+      image(scene1top, width/2 + 30, height/2 - 50);
+      image(scene1top, width/2 + 30, height/2 + 400);
+            
+      //rect(width/2 + 20, height/2 + 185, 390, 100);
+
+      image(sceneBackgroundWaitress, width/2 - 30, height/2 -10);
       
-    }
-      
+      //rect(width/2 + 310, height/2 - 400, 100, 100);
+      if (playerInRect(width/2 + 310, height/2 - 400, 100, 100)) {
+        scene = 4;
+      }     
+   }
+   else if(scene == 4 ){
+     
+     image(player, playerX, playerY,playerSize,playerSize);
+     image(scene3stove, width/2, height/2);
+    
+   }
+    playerCanWalk();
 }
