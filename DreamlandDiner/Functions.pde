@@ -2,9 +2,35 @@ boolean mouseInRect(float x, float y, float w, float h) {
   return mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h;
 }
 
-boolean playerInRect(float x, float y, float w, float h) {
-  return playerX > x && playerX < x + w && playerY > y && playerY < y + h;
+boolean playerInRect(float inRectX, float inRectY, float inRectW, float inRectH) {
+  return playerX > inRectX && playerX < inRectX + inRectW && playerY > inRectY && playerY < inRectY + inRectH;
 }
+
+ void Overlap(){
+   //if player overlaps with given rect
+     lives = lives - 1 ; 
+      
+      if (lives == 0){
+        fill(#82e729);
+        stroke(#0d803e);
+        strokeWeight(10);
+        rect(width/2 - 180, 50, 300, 100);
+        
+        textSize(30);
+        fill(255);
+        text(gameOverText, width/2 - 170, 50, 300, 300);
+        noLoop();
+        gameOver = true;  
+       }
+ }
+    
+    void gameOverLoop(){
+      if(gameOver == true){
+        lives = 3;
+        gameOver = false;
+        loop();     
+    }
+   }
 
  void playerCanWalk(){
       if (keyPressed) {

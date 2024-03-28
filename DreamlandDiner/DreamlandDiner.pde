@@ -4,12 +4,15 @@ void setup(){
   imageMode(CENTER);
   rectMode(CORNER);
   
-  scene1top = loadImage("scene1top.png");
-  scene3stove = loadImage("scene3stove.png");
+  scene1Top = loadImage("scene1top.png");
+  scene3Stove = loadImage("scene3stove.png");
   sceneBackgroundWaitress = loadImage("scenebackgroundwaitress.png");
+  sceneFinalStove = loadImage("scenefinalstove.png");
   
   player = loadImage("player.png");
   playerWaitress = loadImage("playerwaitress.png");
+  playerBusBoy = loadImage("playerbusboy.png");
+  playerChef = loadImage("playerchef.png");
   
   //playerStartXScene3 = 800;
   //playerStartYScene3= 800;
@@ -53,8 +56,8 @@ void draw() {
       playerWaitress.resize(150, 0);
       image(playerWaitress, width/2 - 150, height/2 - 50);
       
-      image(scene1top, width/2 + 30, height/2 - 50);
-      image(scene1top, width/2 + 30, height/2 + 400);
+      image(scene1Top, width/2 + 30, height/2 - 50);
+      image(scene1Top, width/2 + 30, height/2 + 400);
             
       //rect(width/2 + 20, height/2 + 185, 390, 100);
 
@@ -68,8 +71,21 @@ void draw() {
    else if(scene == 4 ){
      
      image(player, playerX, playerY,playerSize,playerSize);
-     image(scene3stove, width/2, height/2);
-    
+     image(scene3Stove, width/2, height/2);
+     playerBusBoy.resize(155, 0);
+     image(playerBusBoy, width/2 + 200, height/2 + 15);
+     //rect(width/2 + 310, height/2 + 310, 100, 100);
+      if (playerInRect(width/2 + 310, height/2 + 310, 100, 100)) {
+        scene = 5;
+      }
+   }
+   else if(scene == 5){
+     image(player, playerX, playerY,playerSize,playerSize);
+     image(sceneFinalStove, width/2, height/2);
+     playerChef.resize(155,0);
+     image(playerChef, width/2 + 250, height/2 + 10);
+     
+     
    }
     playerCanWalk();
 }
